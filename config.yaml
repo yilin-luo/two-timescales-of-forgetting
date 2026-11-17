@@ -1,0 +1,23 @@
+# Grammar (Random Hierarchy Model)
+vocab_size: 24          # v: number of symbols
+num_synonyms: 6         # m: rules per symbol in every rule book
+branching: 2            # s: children per node
+num_levels: 4           # L: latent levels; a sequence has s^L = 16 tokens
+num_kept: 3             # m_keep: synonyms per symbol kept in the fine-tuning grammar
+
+# Transformer
+n_layer: 4
+n_head: 16
+n_embd: 512
+
+# Training, identical for pretraining and fine-tuning (Adam, constant learning rate)
+batch_size: 128         # freshly sampled sequences per step
+learning_rate: 1.0e-4
+pretrain_steps: 1000000
+finetune_steps: 10000000
+num_checkpoints: 280    # nominal size of the logarithmic grid of evaluation steps
+test_size: 32768
+
+# Seeds. The seed of the grammar is the command-line --seed.
+init_seed: 42           # network initialisation
+data_seed: 123          # training and test sequences
