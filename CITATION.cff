@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the paper below."
+title: "Two Timescales of Forgetting"
+type: software
+authors:
+  - family-names: Luo
+    given-names: Yilin
+  - family-names: Lee
+    given-names: Jin Hwa
+  - family-names: Saxe
+    given-names: Andrew M.
+  - family-names: Sclocchi
+    given-names: Antonio
+repository-code: "https://github.com/yilin-luo/two-timescales-of-forgetting"
+license: MIT
+preferred-citation:
+  type: article
+  title: "Two Timescales of Forgetting in Fine-tuning of Language Models: Fast Behavioral Suppression and Slow Representational Drift"
+  authors:
+    - family-names: Luo
+      given-names: Yilin
+    - family-names: Lee
+      given-names: Jin Hwa
+    - family-names: Saxe
+      given-names: Andrew M.
+    - family-names: Sclocchi
+      given-names: Antonio
+  journal: "arXiv preprint"
+  year: 2026

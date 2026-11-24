@@ -3,6 +3,8 @@
 Code for the main experiment of
 
 > **Two Timescales of Forgetting in Fine-tuning of Language Models: Fast Behavioral Suppression and Slow Representational Drift**
+>
+> Yilin Luo\*, Jin Hwa Lee\*, Andrew M. Saxe, Antonio Sclocchi (\* equal contribution)
 
 A transformer is pretrained on a synthetic hierarchical language, the Random Hierarchy Model
 (RHM), and then fine-tuned on a restricted version of the same language in which half of the
@@ -53,8 +55,8 @@ every symbol at every level. The fine-tuning grammar keeps 3 of them and deletes
 
 | Panel | Measurement | Code |
 |---|---|---|
-| (a) | **Deleted-rule rate.** The network generates sequences, which are parsed with the pretraining grammar. The rate is the fraction of nodes at each level that use a deleted rule. Its value under the pretraining grammar is 1/2. | `deleted_rule_rate` in `evaluate.py` |
-| (b) | **Deleted-rule overlap** $q^R$. A sequence of the fine-tuning grammar is compared with a copy in which one latent node uses a deleted synonym of the same symbol. $q^R$ is the overlap of the two standardised hidden representations at the second-to-last token. It is close to 1 while the network represents the deleted synonym like the kept ones. The *symbol reference* is the same overlap when the symbol of the node is replaced by a different one. | `probe_inputs`, `overlap` in `evaluate.py` |
+| (a) | **Generation probe: deleted-rule rate.** The network generates sequences, which are parsed with the pretraining grammar. The rate is the fraction of nodes at each level that use a deleted rule. Its value under the pretraining grammar is 1/2. | `deleted_rule_rate` in `evaluate.py` |
+| (b) | **Representation probe** $q^R$. A sequence of the fine-tuning grammar is compared with a copy in which one latent node uses a deleted synonym of the same symbol. $q^R$ is the overlap of the two standardised hidden representations at the second-to-last token. It is close to 1 while the network represents the deleted synonym like the kept ones. The *symbol reference* is the same overlap when the symbol of the node is replaced by a different one. | `probe_inputs`, `overlap` in `evaluate.py` |
 | (c) | **Last-token loss on three test families.** *Kept grammar*: every node uses a kept rule. *Deleted grammar*: every node uses a deleted rule. *Deleted grammar in context*: the ancestors of the last token use kept rules and all other nodes use deleted rules. The dashed line is the Bayes-optimal loss of the fine-tuning grammar. | `test_families`, `last_token_loss` in `evaluate.py`; `bayes_last_token_loss` in `rhm.py` |
 
 ## Files
@@ -75,6 +77,17 @@ every symbol at every level. The fine-tuning grammar keeps 3 of them and deletes
 - **Cost.** A checkpoint takes about 50 MB, and a full fine-tuning run saves about 250 of them.
   On an older GPU (Quadro P5000), training runs at about 20 steps per second and evaluating one
   checkpoint takes about 10 seconds.
+
+## Citation
+
+```bibtex
+@article{luo2026two,
+  title   = {Two Timescales of Forgetting in Fine-tuning of Language Models: Fast Behavioral Suppression and Slow Representational Drift},
+  author  = {Luo, Yilin and Lee, Jin Hwa and Saxe, Andrew M. and Sclocchi, Antonio},
+  journal = {arXiv preprint},
+  year    = {2026}
+}
+```
 
 ## Acknowledgements
 
